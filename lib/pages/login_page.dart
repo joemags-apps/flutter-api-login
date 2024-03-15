@@ -1,5 +1,6 @@
 import 'package:apilogin/components/my_button.dart';
 import 'package:apilogin/components/my_textfield.dart';
+import 'package:apilogin/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,6 +15,32 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final TextEditingController userNumberController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  // login method
+  void login() {
+    final String userNumber = userNumberController.text;
+    final String password = passwordController.text;
+
+    if (userNumber.isEmpty || password.isEmpty) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: const Text("Please fill all fields"),
+          backgroundColor: Theme.of(context).colorScheme.error,
+        ),
+      );
+      return;
+    }
+
+    // fill in the login logic here
+
+    // if login is successful, navigate to home page
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const HomePage(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +88,10 @@ class _LoginPageState extends State<LoginPage> {
             const SizedBox(height: 10),
 
             // sign in button
-            MyButton(text: "Sign In", onTap: () {}),
+            MyButton(
+              text: "Sign In",
+              onTap: login,
+            ),
 
             // not a user, register
             Row(

@@ -1,5 +1,4 @@
 import 'package:apilogin/auth/login_or_register.dart';
-import 'package:apilogin/pages/login_page.dart';
 import 'package:apilogin/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
